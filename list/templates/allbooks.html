@@ -1,0 +1,17 @@
+{% extends "base_list.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'BookGuide | Books' %}{% endblock %}
+
+{% block main %}
+<main>
+    <article>
+        <h2>{% trans 'All Books' %}</h2>
+        <ul>
+            {% for book in books %}
+                <li><a href="{% url 'reviews' book.pk %}">{{book.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </article>
+</main>
+{% endblock %}

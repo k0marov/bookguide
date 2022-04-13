@@ -1,0 +1,35 @@
+{% extends "base_list.html" %}
+{% load list_extras %}
+{% load i18n %}
+
+{% block title %}{% trans 'BookGuide | Friends' %}{% endblock %}
+
+{% block main %}
+<main>
+    <article>
+        <h2>{% trans 'Invites' %}</h2>
+        <ul>
+            {% for user in invites %}
+            <li id="invite-{{user.pk}}">
+                <a href="{% url 'readonlylist' user.username %}">{{user.username}}</a>
+                <a class="little-tag accept" href="{% url 'accept_invite' user.username %}?next={{request.get_full_path}}#invite-{{user.pk}}">{% trans 'Accept' %}</a>
+                <a class="little-tag decline" href="{% url 'decline_invite' user.username %}?next={{request.get_full_path}}#invite-{{user.pk}}">{% trans 'Decline' %}</a>
+            </li>
+            {% empty %}
+            <p>{% trans 'No pending invites' %}</p>
+            {% endfor %}
+        </ul>
+    </article>
+    <article>
+        <h2>{% trans 'Friends' %}</h2>
+        <ul>
+            {% for user in friends %}
+            <li><a href="{% url 'readonlylist' user.username %}">{{user.username}}</a></li>
+            {% empty %}
+            <p>{% trans 'Currently no friends' %}</p>
+            {% endfor %}
+        </ul>
+        <em style="display:block; text-align: center"><a href="{% url 'users' %}">{% trans 'All Users' %}</a></em>
+    </article>
+</main>
+{% endblock %}

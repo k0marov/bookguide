@@ -1,0 +1,52 @@
+{% extends "base_list.html" %}
+{% load list_extras %}
+{% load i18n %}
+
+{% block title %}{% trans 'BookGuide | Reviews' %}{% endblock %}
+
+{% block main %}
+<main>
+    <article>
+        <h2>{{book.title}}</h2>
+        {% if not reviews %}
+        <p>{% trans 'No Reviews' %}</p>
+        {% endif %}
+        <ul>
+            {% for review in reviews %}
+            <li>
+                <p>{{review.text}}</p>
+                <a href="{% url 'readonlylist' review.user.username %}">{{review.user.username}}</a>
+                {% if review.user == request.user %}
+                <span class="little-tag you">You</span>
+                <a class="danger" href="{% url 'delreview' review.pk %}?next={{ request.get_full_path }}">Delete</a>
+                {% elif review.user.profile in request.user.profile.friends.all %}
+                <span class="little-tag friend" >Friend</span>
+                {% elif review.user in invites_from_me %}
+                <span class="little-tag invite-sent">Invite Sent</span>
+                {% else %}
+                <a id="send-invite-{{review.pk}}"class="little-tag send-invite" href="{% url 'send_invite' review.user.username %}?next={{request.get_full_path}}#send-invite-{{review.pk}}">Send Invite</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <h2 id="new">{% trans 'Add New' %}</h2>
+        <form action="{% url 'home' %}?next={{ request.get_full_path }}" method="post">
+            {% csrf_token %}
+            <input name="title" value="{{ book.title }}" hidden>
+            <textarea required rows="3" placeholder="{% trans 'Review' %}" name="notes"></textarea>
+            <div>
+                <input type="number" max="{% now 'Y'%}" min="2000" name="year" value="{% now 'Y'%}">
+                <select name="month">
+                    {% now 'n' as curr_month %}
+                    {% range_inclusive '1' '12' as months %}
+                    {% for i in months %}
+                    <option value="{{i}}"  {% if curr_month == i %} selected {% endif %}>
+                        {% month_name i %}
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">{% trans 'Add' %}</button>
+        </form>
+    </article>
+</main>
+{% endblock %}

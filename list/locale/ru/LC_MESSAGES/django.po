@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-03 19:05+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: list/templates/allbooks.html:4
+msgid "BookGuide | Books"
+msgstr "BookGuide | Книги"
+
+#: list/templates/allbooks.html:9
+msgid "All Books"
+msgstr "Все Книги"
+
+#: list/templates/base_list.html:17 list/templates/userslist.html:16
+msgid "You"
+msgstr "Вы"
+
+#: list/templates/base_list.html:19 list/templates/userslist.html:18
+msgid "Friend"
+msgstr "Друг"
+
+#: list/templates/base_list.html:21 list/templates/userslist.html:20
+msgid "Invite Sent"
+msgstr "Заявка Отправлена"
+
+#: list/templates/base_list.html:23 list/templates/userslist.html:23
+msgid "Send Invite"
+msgstr "Добавить в друзья"
+
+#: list/templates/base_list.html:32
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: list/templates/base_list.html:33
+msgid "List"
+msgstr "Список"
+
+#: list/templates/base_list.html:34 list/templates/friends.html:24
+msgid "Friends"
+msgstr "Друзья"
+
+#: list/templates/base_list.html:40
+msgid "Logged In as"
+msgstr "Вы вошли как"
+
+#: list/templates/base_list.html:41
+msgid "Logout"
+msgstr "Выйти"
+
+#: list/templates/base_list.html:43
+msgid "Not Logged In"
+msgstr "Вы не вошли в аккаунт"
+
+#: list/templates/base_list.html:44 list/templates/login.html:24
+#: list/templates/signup.html:28
+msgid "Login"
+msgstr "Войти"
+
+#: list/templates/friends.html:5
+msgid "BookGuide | Friends"
+msgstr "BookGuide | Друзья"
+
+#: list/templates/friends.html:10
+msgid "Invites"
+msgstr "Заявки"
+
+#: list/templates/friends.html:15
+msgid "Accept"
+msgstr "Принять"
+
+#: list/templates/friends.html:16
+msgid "Decline"
+msgstr "Отклонить"
+
+#: list/templates/friends.html:19
+msgid "No pending invites"
+msgstr "Нет новых заявок"
+
+#: list/templates/friends.html:29
+msgid "Currently no friends"
+msgstr "Пока нет друзей"
+
+#: list/templates/friends.html:32
+msgid "All Users"
+msgstr "Все пользователи"
+
+#: list/templates/list.html:23
+msgid "Other Reviews"
+msgstr "Другие отзывы"
+
+#: list/templates/list.html:25
+msgid "Delete"
+msgstr "Удалить"
+
+#: list/templates/list.html:36
+msgid "The list is currently empty"
+msgstr "Список пока пуст"
+
+#: list/templates/list.html:45
+msgid "Add Book"
+msgstr "Новая Книга"
+
+#: list/templates/reviews.html:32
+msgid "Add New"
+msgstr "Новый Отзыв"
+
+#: list/templates/list.html:48
+msgid "Title"
+msgstr "Название"
+
+#: list/templates/list.html:49
+msgid "Review (Optional)"
+msgstr "Отзыв (необязательно)"
+
+#: list/templates/list.html:61 list/templates/reviews.html:48
+msgid "Add"
+msgstr "Добавить"
+
+#: list/templates/login.html:10
+msgid "BookGuide | Log In"
+msgstr "BookGuide | Вход"
+
+#: list/templates/login.html:17
+msgid "Incorrect Password"
+msgstr "Неверный Пароль"
+
+#: list/templates/login.html:21
+msgid "Log In"
+msgstr "Вход"
+
+#: list/templates/login.html:22 list/templates/signup.html:23
+msgid "Username"
+msgstr "Имя"
+
+#: list/templates/login.html:23 list/templates/signup.html:24
+msgid "Password"
+msgstr "Пароль"
+
+#: list/templates/login.html:25
+msgid "Or"
+msgstr "Или"
+
+#: list/templates/login.html:26
+msgid "Create new account"
+msgstr "Создать новый аккаунт"
+
+#: list/templates/reviews.html:5
+msgid "BookGuide | Reviews"
+msgstr "BookGuide | Отзывы"
+
+#: list/templates/reviews.html:12
+msgid "No Reviews"
+msgstr "Отзывов пока нет"
+
+#: list/templates/reviews.html:36
+msgid "Review"
+msgstr "Отзыв"
+
+#: list/templates/signup.html:10
+msgid "BookGuide | Sign Up"
+msgstr "BookGuide | Регистрация"
+
+#: list/templates/signup.html:22
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: list/templates/signup.html:25
+msgid "Repeat Password"
+msgstr "Повторите пароль"
+
+#: list/templates/signup.html:26
+msgid "Create"
+msgstr "Зарегистрироваться"
+
+#: list/templates/signup.html:27
+msgid "Already have an account?"
+msgstr "У Вас уже есть аккаунт?"
+
+#: list/templates/userslist.html:5
+msgid "BookGuide | Users"
+msgstr "BookGuide | Пользователи"
+
+#: list/templates/userslist.html:10
+msgid "Users"
+msgstr "Пользователи"
+
+#: list/templatetags/list_extras.py:13
+msgid "January"
+msgstr "Январь"
+
+#: list/templatetags/list_extras.py:15
+msgid "February"
+msgstr "Февраль"
+
+#: list/templatetags/list_extras.py:17
+msgid "March"
+msgstr "Март"
+
+#: list/templatetags/list_extras.py:19
+msgid "April"
+msgstr "Апрель"
+
+#: list/templatetags/list_extras.py:21
+msgid "May"
+msgstr "Май"
+
+#: list/templatetags/list_extras.py:23
+msgid "June"
+msgstr "Июнь"
+
+#: list/templatetags/list_extras.py:25
+msgid "July"
+msgstr "Июль"
+
+#: list/templatetags/list_extras.py:27
+msgid "August"
+msgstr "Август"
+
+#: list/templatetags/list_extras.py:29
+msgid "September"
+msgstr "Сентябрь"
+
+#: list/templatetags/list_extras.py:31
+msgid "October"
+msgstr "Октябрь"
+
+#: list/templatetags/list_extras.py:33
+msgid "November"
+msgstr "Ноябрь"
+
+#: list/templatetags/list_extras.py:35
+msgid "December"
+msgstr "Декабрь"
+
+#~ msgid "This user does not have a public list."
+#~ msgstr "У этого пользователя нет публичного списка."
+
+#~ msgid "Make Public"
+#~ msgstr "Сделать публичным"
+
+#~ msgid "Make Private"
+#~ msgstr "Сделать приватным"

@@ -1,0 +1,15 @@
+html {
+    --dark: #364954;
+    --main: #4D87A5;
+    --text-light: #F0FBFF;
+    --text-dark: black;
+    --header-main: #AB6B9B;
+    --header-secondary: #004D68;
+    --highlight: #00C0FF;
+    --danger: #C46367;
+    --green: #2ECC71;
+    --main-darker: #002840;
+    --highlight-in-text: #9AAEBB;
+    --highlight-in-header: #B8A6B3;
+    --link-secondary: #9D7392;
+}

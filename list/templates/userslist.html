@@ -1,0 +1,30 @@
+{% extends "base_list.html" %}
+{% load list_extras %}
+{% load i18n %}
+
+{% block title %}{% trans 'BookGuide | Users' %}{% endblock %}
+
+{% block main %}
+<main>
+    <article>
+        <h2>{% trans 'Users' %}</h2>
+        <ul>
+            {% for user in users %}
+            <li>
+                <a href="{% url 'readonlylist' user.username %}">{{user.username}}</a>
+                {% if user.username == request.user.username %}
+                    <span class="little-tag you">{% trans 'You' %}</span>
+                {% elif user.profile in request.user.profile.friends.all %}
+                    <span class="little-tag friend" >{% trans 'Friend' %}</span>
+                {% elif user in invites_from_me %}
+                <span class="little-tag invite-sent">{% trans 'Invite Sent' %}</span>
+                {% else %}
+                <a id="send-invite-{{user.pk}}" class="little-tag send-invite"
+                                                href="{% url 'send_invite' user.username %}?next={{request.get_full_path}}#send-invite-{{user.pk}}">{% trans 'Send Invite' %}</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+</main>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+{% load list_extras %}
+{% load i18n %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'list.css' %}" type="text/css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'colors.css' %}" type="text/css">
+    <title>{% block title %}{%endblock%}</title>
+{% endblock %}
+{% block content %}
+    <header>
+        {% if another_owner.username %}
+            <h1><em>{{ another_owner.username }}'s</em> <a href="{% url 'home' %}"><em>BookGuide</em></a></h1>
+            {% if another_owner.username == request.user.username %}
+                <span class="big-tag you">{% trans 'You' %}</span>
+            {% elif another_owner.profile in request.user.profile.friends.all %}
+                <span class="big-tag friend" >{% trans 'Friend' %}</span>
+            {% elif another_owner in invites_from_me %}
+                <span class="big-tag invite-sent">{% trans 'Invite Sent' %}</span>
+            {% else %}
+            <a class="big-tag send-invite" href="{% url 'send_invite' another_owner.username %}?next={{request.get_full_path}}">{% trans 'Send Invite' %}</a>
+            {% endif %}
+        {% else %}
+            <h1><a href="{% url 'home' %}" ><em>BookGuide</em></a></h1>
+        {% endif %}
+
+    </header>
+
+    <nav>
+        <a {% if current_tab == 'reviews' %}selected{%endif%} href="{% url 'allbooks' %}">{% trans 'Reviews' %}</a>
+        <a {% if current_tab == 'list' %}selected{%endif%} href="{% url 'home' %}">{% trans 'List' %}</a>
+        <a {% if current_tab == 'friends' %}selected{%endif%} href="{% url 'friends' %}">{% trans 'Friends' %}</a>
+    </nav>
+    {% block main %}
+    {% endblock %}
+    <footer>
+        {% if user.username %}
+            <p>{% trans 'Logged In as' %} <em>{{ user.username }}</em></p>
+            <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+        {% else %}
+            <p>{% trans 'Not Logged In' %}</p>
+            <em><a href="{% url 'login' %}">{% trans 'Login' %}</a></em>
+        {% endif %}
+    </footer>
+{% endblock %}

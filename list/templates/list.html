@@ -1,0 +1,66 @@
+{% extends "base_list.html" %}
+{% load list_extras %}
+{% load i18n %}
+
+{% block title %}BookGuide{% endblock %}
+
+{% block main %}
+<main>
+    {% for year, monthlist in list.items %}
+        <article>
+            <h2><label for="hide-months-{{year}}"><span>{{year}}</span></label></h2>
+            <input id="hide-months-{{year}}" type="checkbox">
+            {% for month, booklist in monthlist.items %}
+            <section>
+                <h3><span>{% month_name month %}</span></h3>
+                <ul>
+                    {% for book in booklist %}
+                    <li>
+                        <label for="{{book.pk}}-cb">{{ book.book.title }}</label>
+                        <input id="{{book.pk}}-cb" type="checkbox">
+                        <aside>
+                            <p>{{book.notes}}</p>
+                            <em><a href="{% url 'reviews' book.book.pk %}">{% trans 'Other Reviews' %}</a></em><br>
+                            {% if not another_owner %}
+                            <a class="delete" href="{% url 'delbookdate' book.pk %}">{% trans 'Delete' %}</a>
+                            {% endif %}
+                        </aside>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endfor %}
+        </article>
+    {% empty %}
+    <h1>{% trans 'The list is currently empty' %}</h1>
+    {% endfor %}
+    {% if not another_owner %}
+        <article id="new">
+            <datalist id="allbooks">
+                {% for title in all_books %}
+                    <option>{{title}}
+                {% endfor %}
+            </datalist>
+            <h2>{% trans 'Add Book' %}</h2>
+            <form action="." method="post">
+                {% csrf_token %}
+                <input placeholder="{% trans 'Title' %}" name="title" list="allbooks" required>
+                <textarea rows="3" placeholder="{% trans 'Review (Optional)' %}" name="notes"></textarea>
+                <div>
+                    <input type="number" max="{% now 'Y'%}" min="2000" name="year" value="{% now 'Y'%}">
+                    <select name="month">
+                        {% now 'n' as curr_month %}
+                        {% range_inclusive '1' '12' as months %}
+                        {% for i in months %}
+                        <option value="{{i}}"  {% if curr_month == i %} selected {% endif %}>
+                            {% month_name i %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit">{% trans 'Add' %}</button>
+            </form>
+        </article>
+    {% endif %}
+</main>
+{% endblock %}

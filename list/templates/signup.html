@@ -1,0 +1,30 @@
+{% extends 'base_generic.html' %}
+{% load i18n %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'login.css' %}" type="text/css">
+{% load static %}
+<link rel="stylesheet" href="{% static 'colors.css' %}" type="text/css">
+
+<title>{% trans 'BookGuide | Sign Up' %}</title>
+{% endblock %}
+
+{% block content %}
+    <main>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <h1>{% trans error %}</h1>
+            {% endfor %}
+        {% endfor %}
+        <form method="post">
+            {% csrf_token %}
+            <h2>{% trans 'Sign Up' %}</h2>
+            <input autocapitalize="off" name="username" required placeholder="{% trans 'Username' %}">
+            <input name="password1" type="password" required placeholder="{% trans 'Password' %}">
+            <input name="password2" type="password" required placeholder="{% trans 'Repeat Password'%}">
+            <button type="submit">{% trans 'Create' %}</button>
+            <p>{% trans 'Already have an account?' %}</p>
+            <a href={% url 'login' %}>{% trans 'Login' %}</a>
+        </form>
+{% endblock %}

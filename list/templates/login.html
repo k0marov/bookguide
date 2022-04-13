@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'login.css' %}" type="text/css">
+{% load static %}
+<link rel="stylesheet" href="{% static 'colors.css' %}" type="text/css">
+
+<title>{% trans 'BookGuide | Log In' %}</title>
+{% endblock %}
+
+{% block content %}
+
+    <main>
+        {% if form.errors %}
+            <h1>{% trans 'Incorrect Password' %}</h1>
+        {% endif %}
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h2>{% trans "Log In" %}</h2>
+            <input placeholder="{% trans 'Username' %}" required autocomplete="username" autofocus name="username">
+            <input type="password" placeholder="{% trans 'Password' %}" required autocomplete='current-password' name="password">
+            <button type="submit">{% trans 'Login' %}</button>
+            <p>{% trans 'Or' %}</p>
+            <a href="{% url 'signup' %}">{% trans 'Create new account' %}</a>
+        </form>
+    </main>
+{% endblock %}
