@@ -2,6 +2,7 @@ venv
 .vscode
 .env
 .idea
-.DS_STORE
+.DS_Store
 *.cpython
+*.pyc
 db.sqlite3
