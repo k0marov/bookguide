@@ -4,3 +4,4 @@ venv
 .idea
 .DS_STORE
 *.cpython
+db.sqlite3
